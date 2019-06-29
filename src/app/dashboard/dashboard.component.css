@@ -1,0 +1,17 @@
+.container {
+    padding: 15px;
+  }
+
+.details{
+    margin: 20px;
+}
+.details mat-form-field{
+    width: 250px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+mat-divider{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    position : relative !important;
+}

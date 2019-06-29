@@ -16,3 +16,9 @@
     top: 5px;
     cursor: pointer;
   }
+
+  @media only screen and (max-width: 768px) {
+    .open-togg{
+      display:none;
+    }
+}

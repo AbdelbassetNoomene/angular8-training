@@ -2,10 +2,10 @@
 
     <mat-toolbar-row>
 
-        <button mat-icon-button (click)="displaySidenav()" *ngIf="! toggleOpened">
+        <button mat-icon-button (click)="toggleSidenav(1)" *ngIf="! toggleOpened">
             <mat-icon>menu</mat-icon>
         </button>
-        <button mat-icon-button (click)="hideSidenav()" *ngIf="toggleOpened">
+        <button mat-icon-button class="open-togg" (click)="toggleSidenav(0)" *ngIf="toggleOpened">
             <mat-icon>first_page</mat-icon>
         </button>
         <span> Angular Training </span>

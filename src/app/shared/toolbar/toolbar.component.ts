@@ -17,11 +17,7 @@ export class ToolbarComponent implements OnInit {
 
   }
 
-  displaySidenav(){
-    this.toggleSidenavEvent.emit(true);
+  toggleSidenav(action: number){
+    this.toggleSidenavEvent.emit(action == 1 ? true:false);
   }
-  hideSidenav(){
-    this.toggleSidenavEvent.emit(false);
-  }
-
 }

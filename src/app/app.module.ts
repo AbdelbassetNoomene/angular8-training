@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { SidenavComponent } from './shared/sidenav/sidenav.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ContentComponent } from './content/content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    SidenavComponent
+    SidenavComponent,
+    DashboardComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,

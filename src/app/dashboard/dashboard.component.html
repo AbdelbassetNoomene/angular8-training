@@ -1,0 +1,59 @@
+<div class="container">
+    <mat-card class="component-details">
+        <mat-card-header>
+            <mat-card-title>Components & Databinding Deep Dive</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="details" flex>
+                <span>Local Reference</span>
+               
+                <div class="form-group">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="What's the last angular version ?" #inputValue name="version">
+                    </mat-form-field>
+                    <button  class="btn-validate" mat-raised-button color="primary" (click)="validate(inputValue)"
+                        type="button">Validate</button>
+                    <div *ngIf="angVersion">
+                        <span>{{angVersion}}</span>
+                    </div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="details" flex>
+                <span>Getting Access to the Template & DOM with @ViewChild </span>
+                <form>
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="What's SPA" #spaInputValue name="spa">
+                        </mat-form-field>
+                        <button class="btn-validate" mat-raised-button color="primary" (click)="getSPAResponse()"
+                            type="button">Validate</button>
+                        <div *ngIf="spa">
+                            <span>{{spa}}</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <mat-divider></mat-divider>
+            <div class="details" flex>
+                <span>Projecting Content into components with ng-Content</span>
+                <form>
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Content to project in content component" #contentInputValue name="content">
+                        </mat-form-field>
+                        <button class="btn-validate" mat-raised-button color="primary" (click)="projectContent()"
+                            type="button">Project Content</button>
+                        <div *ngIf="content">
+                            <app-content>{{content}}</app-content>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+        </mat-card-content>
+    </mat-card>
+
+</div>
