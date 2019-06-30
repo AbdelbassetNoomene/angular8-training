@@ -8,6 +8,9 @@ import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { SidenavComponent } from './shared/sidenav/sidenav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContentComponent } from './content/content.component';
+import { HighlightDirective } from './shared/directives/highlight.directive';
+import { PropertiesHighlightDirective } from './shared/directives/properties-highlight.directive';
+import { ShortTextDirective } from './shared/directives/short-text.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { ContentComponent } from './content/content.component';
     ToolbarComponent,
     SidenavComponent,
     DashboardComponent,
-    ContentComponent
+    ContentComponent,
+    HighlightDirective,
+    PropertiesHighlightDirective,
+    ShortTextDirective
   ],
   imports: [
     BrowserModule,
