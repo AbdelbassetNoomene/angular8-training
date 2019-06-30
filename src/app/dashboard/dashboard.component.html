@@ -6,12 +6,12 @@
         <mat-card-content>
             <div class="details" flex>
                 <span>Local Reference</span>
-
+               
                 <div class="form-group">
                     <mat-form-field class="example-full-width">
                         <input matInput placeholder="What's the last angular version ?" #inputValue name="version">
                     </mat-form-field>
-                    <button class="btn-validate" mat-raised-button color="primary" (click)="validate(inputValue)"
+                    <button  class="btn-validate" mat-raised-button color="primary" (click)="validate(inputValue)"
                         type="button">Validate</button>
                     <div *ngIf="angVersion">
                         <span>{{angVersion}}</span>
@@ -41,8 +41,7 @@
                 <form>
                     <div class="form-group">
                         <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Content to project in content component" #contentInputValue
-                                name="content">
+                            <input matInput placeholder="Content to project in content component" #contentInputValue name="content">
                         </mat-form-field>
                         <button class="btn-validate" mat-raised-button color="primary" (click)="projectContent()"
                             type="button">Project Content</button>
@@ -51,62 +50,6 @@
                         </div>
                     </div>
                 </form>
-            </div>
-
-
-        </mat-card-content>
-    </mat-card>
-    <mat-divider></mat-divider>
-    <mat-card class="component-details">
-        <mat-card-header>
-            <mat-card-title>Directives</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <div class="details" flex>
-                <span>*ngIf</span>
-                <mat-divider></mat-divider>
-                <div class="form-group condition">
-                    <div *ngIf="condition">Content to render when condition is true.</div>
-                    <button class="btn-validate" mat-raised-button color="primary" (click)="condition = ! condition"
-                        type="button">Change condition</button>
-                </div>
-                <mat-divider></mat-divider>
-                <div class="form-group">
-                    <div *ngIf="condition2; else elseBlock">Content to render when condition is true.</div>
-                    <ng-template #elseBlock>Content to render when condition is false.</ng-template>
-
-                    <button class="btn-validate" mat-raised-button color="primary" (click)="condition2 = ! condition2"
-                        type="button">Change condition</button>
-                </div>
-                <mat-divider></mat-divider>
-
-            </div>
-            <mat-divider></mat-divider>
-            <div class="details" flex>
-                <span>Create custom directive </span>
-                <mat-divider></mat-divider>
-                <p appHighlight>This is my [appHighlight] directive</p>
-                <mat-divider></mat-divider>
-                <div class="div-border" appPropertiesHighlight defaultRadius="10px" hoverRadius="20px">
-                    <p>This is my [appPropertiesHighlight] directive</p>
-                </div>
-                <div class="div-border" appPropertiesHighlight [defaultRadius]="'10px'" [hoverRadius]="'20px'">
-                    <p>This is my [appPropertiesHighlight] directive</p>
-                </div>
-
-                <!-- <div class="div-border" [appPropertiesHighlight]="'100px'" defaultRadius="10px" >
-                            <p>This is my [appPropertiesHighlight] directive</p>
-                        </div> -->
-                <mat-divider></mat-divider>
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Text to add" #textInputValue name="content">
-                </mat-form-field>
-                <button class="btn-validate" mat-raised-button color="primary" (click)="verifyText()"
-                    type="button">Verify Text</button>
-                <div *ngIf="text">
-
-                    <p *appShortText="text">{{text}}</p>
-                </div>
             </div>
 
 

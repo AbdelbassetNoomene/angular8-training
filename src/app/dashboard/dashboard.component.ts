@@ -10,14 +10,9 @@ export class DashboardComponent implements OnInit {
   angVersion: String;
   @ViewChild('spaInputValue', { static: true }) spaInput: ElementRef;
   @ViewChild('contentInputValue', { static: true }) contentInput: ElementRef;
-  @ViewChild('textInputValue', { static: true }) textValue: ElementRef;
 
   spa: string;
   content : string
-  condition = false;
-  condition2 = false;
-  text = '';
-
   constructor() { }
 
   ngOnInit() {
@@ -39,7 +34,5 @@ export class DashboardComponent implements OnInit {
     this.content = this.contentInput.nativeElement.value;
   }
 
-  verifyText(){
-    this.text = this.textValue.nativeElement.value;
-  }
+
 }

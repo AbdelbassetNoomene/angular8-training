@@ -15,19 +15,3 @@ mat-divider{
     margin-top: 10px;
     position : relative !important;
 }
-
-mat-card{
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-.condition{
-    height: 50px;
-    display: block;
-    margin: 20px;
-}
-
-.div-border{
-    height: 50px;
-    width: 350px;
-    border: 1px solid black;
-}
