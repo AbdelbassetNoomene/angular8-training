@@ -1,0 +1,12 @@
+<div class="user-details">
+    <mat-form-field>
+        <input matInput placeholder="username" #username>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="lastname" #lastname>
+    </mat-form-field>
+
+    <button class="btn-validate" mat-raised-button color="primary" (click)="addUser(username.value, lastname.value)"
+        type="button">Validate</button>
+</div>

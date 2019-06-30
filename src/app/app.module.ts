@@ -12,6 +12,8 @@ import { HighlightDirective } from './shared/directives/highlight.directive';
 import { PropertiesHighlightDirective } from './shared/directives/properties-highlight.directive';
 import { ShortTextDirective } from './shared/directives/short-text.directive';
 import { FilterPipe } from './shared/pipes/filter.pipe';
+import { UserDetailsComponent } from './user/user-details/user-details.component';
+import { UserListComponent } from './user/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
     HighlightDirective,
     PropertiesHighlightDirective,
     ShortTextDirective,
-    FilterPipe
+    FilterPipe,
+    UserListComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

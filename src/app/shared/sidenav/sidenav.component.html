@@ -27,9 +27,7 @@
   
     <mat-sidenav-content>
         <app-toolbar (toggleSidenavEvent)="toggleSidenav($event)" [toggleOpened]="opened"></app-toolbar>
-        <app-dashboard></app-dashboard>
-        
-        
-        <!-- <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p> -->
+        <!-- <app-dashboard></app-dashboard> -->
+        <app-user-list></app-user-list>
     </mat-sidenav-content>
   </mat-sidenav-container>

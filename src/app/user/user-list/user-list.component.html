@@ -1,0 +1,15 @@
+<mat-card class="component-details">
+    <mat-card-header>
+        <mat-card-title>Service & DI</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <app-user-details></app-user-details>
+        <mat-divider></mat-divider>
+        <div class="details" flex>
+            <span>List Users</span>
+            <ul>
+                <li *ngFor="let user of listUsers">{{user.name}} {{user.lastname}}</li>
+            </ul>
+        </div>
+    </mat-card-content>
+</mat-card>
