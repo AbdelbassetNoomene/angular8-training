@@ -1,15 +1,73 @@
 <mat-card class="component-details">
     <mat-card-header>
-        <mat-card-title>Service & DI</mat-card-title>
+        <mat-card-title>List Users</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <app-user-details></app-user-details>
-        <mat-divider></mat-divider>
-        <div class="details" flex>
-            <span>List Users</span>
-            <ul>
-                <li *ngFor="let user of listUsers">{{user.name}} {{user.lastname}}</li>
-            </ul>
-        </div>
+        <mat-table #table [dataSource]="listUsers" matSort class="mat-cell">
+    
+                <!-- ID Column -->
+                <ng-container matColumnDef="image">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>Image</mat-header-cell>
+                  <mat-cell *matCellDef="let row" >
+                      <img *ngIf="!row.image" class="circle" src="./assets/images/avatar.png">
+                      <img *ngIf="row.image" class="circle" src="{{row.image}}">
+                    </mat-cell>
+                </ng-container>
+            
+                <ng-container matColumnDef="name">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
+                </ng-container>
+            
+                <ng-container matColumnDef="lastname">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>Lastname</mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.lastname}}</mat-cell>
+                </ng-container>
+            
+                <ng-container matColumnDef="age">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>Age</mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.age}}</mat-cell>
+                </ng-container>
+            
+                <ng-container matColumnDef="active">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>Active</mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.active}}</mat-cell>
+                </ng-container>
+            
+                <!-- actions -->
+                <ng-container matColumnDef="actions">
+                  <mat-header-cell *matHeaderCellDef>
+                    <button mat-icon-button color="primary" (click)="addUser()">
+                      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+                    </button>
+                  </mat-header-cell>
+            
+                  <mat-cell *matCellDef="let row; let i=index;">
+                    <button mat-icon-button color="accent" (click)="editUser(row.id)">
+                      <mat-icon aria-label="Edit">edit</mat-icon>
+                    </button>
+            
+                    <button mat-icon-button color="accent" (click)="deleteUser(row.id)">
+                      <mat-icon aria-label="Delete">delete</mat-icon>
+                    </button>
+                  </mat-cell>
+                </ng-container>
+            
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+              <div class="no-results" [style.display]="listUsers.length == 0 ? '' : 'none'">
+                    No results
+                  </div> 
+                
+                   <mat-paginator #paginator
+                                 [length]="listUsers.length"
+                                 [pageIndex]="0"
+                                 [pageSize]="10"
+                                 [pageSizeOptions]="[5, 10, 25, 100]">
+                  </mat-paginator>
     </mat-card-content>
 </mat-card>
+
+
+    

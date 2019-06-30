@@ -1,0 +1,13 @@
+.user-card {
+    max-width: 400px;
+    margin: auto;
+  }
+  mat-card-content{
+      display:block;
+  }
+  
+  mat-divider{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    position : relative !important;
+}

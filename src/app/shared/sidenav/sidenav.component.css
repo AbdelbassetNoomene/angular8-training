@@ -35,6 +35,10 @@ mat-sidenav{
     display: none;
     margin-bottom: 15px;
   }
+
+  .mat-nav-list a.active {
+    background: #c1c1e3;
+}
   @media only screen and (max-width: 768px) {
     mat-sidenav{
       display:none;

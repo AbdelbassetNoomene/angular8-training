@@ -10,7 +10,7 @@ export class FilterPipe implements PipeTransform {
   transform(users: User[], actif: boolean): any {
     let filteredUsers: User[] = [];
     for (const user of users) {
-      if (user.actif == actif) {
+      if (user.active == actif) {
         filteredUsers.push(user);
       }
     }

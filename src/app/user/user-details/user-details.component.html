@@ -1,12 +1,16 @@
-<div class="user-details">
-    <mat-form-field>
-        <input matInput placeholder="username" #username>
-    </mat-form-field>
-
-    <mat-form-field>
-        <input matInput placeholder="lastname" #lastname>
-    </mat-form-field>
-
-    <button class="btn-validate" mat-raised-button color="primary" (click)="addUser(username.value, lastname.value)"
-        type="button">Validate</button>
-</div>
+<mat-card class="user-card" *ngIf='user'>
+        <mat-card-header>
+          <mat-card-title>{{user.name}} {{user.lastname}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image *ngIf="! user.image"  src="./assets/images/avatar.png" alt="user photo">
+        <img mat-card-image *ngIf="user.image" src="{{user.image}}" alt="user photo">
+        <mat-card-content>
+          <span>Age : {{user.age}}</span>
+          <mat-divider></mat-divider>
+          <span>Active : {{user.active}}</span>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button [routerLink]="['/users',user.id,'edit']">Edit User</button>
+          <button mat-button routerLink="/users">List Users</button>
+        </mat-card-actions>
+      </mat-card>

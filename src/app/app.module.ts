@@ -12,8 +12,8 @@ import { HighlightDirective } from './shared/directives/highlight.directive';
 import { PropertiesHighlightDirective } from './shared/directives/properties-highlight.directive';
 import { ShortTextDirective } from './shared/directives/short-text.directive';
 import { FilterPipe } from './shared/pipes/filter.pipe';
-import { UserDetailsComponent } from './user/user-details/user-details.component';
-import { UserListComponent } from './user/user-list/user-list.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutes } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -25,14 +25,13 @@ import { UserListComponent } from './user/user-list/user-list.component';
     HighlightDirective,
     PropertiesHighlightDirective,
     ShortTextDirective,
-    FilterPipe,
-    UserListComponent,
-    UserDetailsComponent
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    RouterModule.forRoot(AppRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
