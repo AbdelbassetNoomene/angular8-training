@@ -103,12 +103,47 @@
                 </mat-form-field>
                 <button class="btn-validate" mat-raised-button color="primary" (click)="verifyText()"
                     type="button">Verify Text</button>
-                <div *ngIf="text">
 
-                    <p *appShortText="text">{{text}}</p>
+                <p *appShortText="text">{{text}}</p>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-divider></mat-divider>
+    <mat-card class="component-details">
+        <mat-card-header>
+            <mat-card-title>Pipes</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="details" flex>
+                <div class="form-group condition">
+                    <span>Date : {{date}}</span>
+                </div>
+                <div class="form-group condition">
+                    <span>Formatted Date : {{date | date :'dd/mm/yyyy'}}</span>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="form-group condition">
+                    <span>Uppercase Text : {{text | uppercase}}</span>
+                </div>
+                <div class="form-group condition">
+                    <span>LowerCase Text : {{text | lowercase}}</span>
                 </div>
             </div>
-
+            <mat-divider></mat-divider>
+            <span>Create custom pipe </span>
+            <div>
+                <button class="btn-validate" mat-raised-button color="primary" (click)="addUser(1)" type="button">Add
+                    Active User</button>
+                <button class="btn-validate" mat-raised-button color="primary" (click)="addUser(0)" type="button">Add
+                    Inactive User</button>
+            </div>
+            <ul>
+                <li *ngFor="let user of users | filter : true ">{{user.name}}</li>
+            </ul>
+            <span>Async pipe </span>
+            <ul>
+                <li *ngFor="let user of asynUsers | async ">{{user.name}}</li>
+            </ul>
 
         </mat-card-content>
     </mat-card>
