@@ -44,4 +44,11 @@ export class UserService {
     }
     return null;
   }
+
+  deleteUser(id) {
+    // user.id = this.users.length + 1;
+    // this.users.push(user);
+    return this.http.delete('https://manage-users-back.herokuapp.com/users/'+id);
+  }
+  
 }

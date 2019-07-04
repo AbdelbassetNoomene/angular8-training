@@ -5,7 +5,6 @@ import { NgForm } from '@angular/forms';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Role } from '../shared/models/role.model';
 import { UserInfo } from '../shared/models/user2.model';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-auth',
