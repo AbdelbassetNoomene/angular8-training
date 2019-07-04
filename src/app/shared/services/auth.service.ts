@@ -13,6 +13,7 @@ import { UserInfo } from '../models/user2.model';
 export class AuthService {
   private currentUserSubject: BehaviorSubject<UserInfo>;
   public currentUser: Observable<UserInfo>;
+  public user : UserInfo;
 
   constructor(private http: HttpClient,
     private router: Router) {
@@ -29,9 +30,10 @@ export class AuthService {
       if (res && res.token) {
           sessionStorage.setItem('token', res.token);
         const helper = new JwtHelperService();
-        const user =helper.decodeToken(res.token).sub;
-        sessionStorage.setItem('user', JSON.stringify(user));
-        this.currentUserSubject.next(user);
+        this.user =helper.decodeToken(res.token).sub;
+
+        sessionStorage.setItem('user', JSON.stringify(this.user));
+        this.currentUserSubject.next(this.user);
       }
       // console.log(res);
       return res;
@@ -39,8 +41,10 @@ export class AuthService {
 }
 
 logoutUser() {
-  localStorage.removeItem('token')
-  this.router.navigate(['/pages/login'])
+  sessionStorage.removeItem('token');
+  sessionStorage.removeItem('user');
+  this.router.navigate(['/auth']);
+  this.currentUserSubject.next(null);
 }
 
 getToken() {
@@ -56,5 +60,8 @@ decodeToken(): User {
 
 loggedIn() {
   return !!sessionStorage.getItem('token');
+}
+isAdmin() {
+  return this.user && this.user.roles.includes("ADMIN");
 }
 }

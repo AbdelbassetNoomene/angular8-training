@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -7,14 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
 
+  currentUserSubscription: Subscription;
   opened = true;
 
-  constructor() { }
+  authenticated: boolean;
+  isAdmin: boolean;
+
+  constructor(private authenticationService: AuthService) {
+    this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+      if(user){
+        this.authenticated = true;
+        this.isAdmin = user.roles.includes("ADMIN");
+      }else{
+        this.authenticated = false;
+        this.isAdmin=false;
+      } 
+    });
+  }
 
   ngOnInit() {
   }
 
-  toggleSidenav(event){
+  toggleSidenav(event) {
     console.log(event);
     this.opened = event;
   }

@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -11,7 +13,18 @@ export class ToolbarComponent implements OnInit {
 
   @Input() toggleOpened : boolean;
 
-  constructor() { }
+  currentUserSubscription : Subscription;
+  authenticated : boolean;
+
+  constructor(private authenticationService: AuthService) {
+    this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+      if(user){
+        this.authenticated = true;
+      }else{
+        this.authenticated = false;
+      } 
+    });
+  }
 
   ngOnInit() {
 
@@ -19,5 +32,9 @@ export class ToolbarComponent implements OnInit {
 
   toggleSidenav(action: number){
     this.toggleSidenavEvent.emit(action == 1 ? true:false);
+  }
+
+  logout(){
+    this.authenticationService.logoutUser();
   }
 }

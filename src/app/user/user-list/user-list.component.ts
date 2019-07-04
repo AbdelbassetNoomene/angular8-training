@@ -22,7 +22,12 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService, private router: Router, private activeRoute: ActivatedRoute, 
     private authenticationService: AuthService) {
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
-            this.currentUser = user;
+      if(user){
+        this.currentUser = user;
+      }else{
+        this.currentUser = null;
+      }   
+      
         });
    }
 

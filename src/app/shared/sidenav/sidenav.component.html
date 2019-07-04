@@ -10,13 +10,13 @@
                   <span>Accueil</span>
               </a>
           </mat-nav-list>
-          <mat-nav-list>
+          <mat-nav-list *ngIf="isAdmin">
             <a mat-list-item class="ml-2" routerLink="/users" routerLinkActive="active">
                 <mat-icon mat-list-icon>groupe</mat-icon>
                 <span>Users</span>
             </a>
         </mat-nav-list>
-        <mat-nav-list>
+        <mat-nav-list *ngIf="authenticated">
             <a mat-list-item class="ml-2" routerLink="/chat" routerLinkActive="active">
                 <mat-icon mat-list-icon>chat</mat-icon>
                 <span>Chat</span>

@@ -17,7 +17,9 @@
             <mat-icon class="ml-3" title="Chat">chat</mat-icon>
         </div>
 
-        <div class="profil" fxFlex fxLayout fxLayoutAlign="flex-end">
+        <button *ngIf="! authenticated" class="btn-validate" mat-raised-button color="primary" routerLink="/auth"
+            type="button">Login</button>
+        <div class="profil" fxFlex fxLayout fxLayoutAlign="flex-end" *ngIf="authenticated">
             <button mat-icon-button [matMenuTriggerFor]="menu" fxShow.lt-md="true" fxShow.gt-sm="false">
                 <img class="circle" src="./assets/images/avatar.png">
             </button>
@@ -31,7 +33,7 @@
                     <mat-icon>settings</mat-icon>
                     <span>Settings</span>
                 </button>
-                <button mat-menu-item>
+                <button mat-menu-item (click)="logout()">
                     <mat-icon>exit_to_app</mat-icon>
                     <span>Logout</span>
                 </button>

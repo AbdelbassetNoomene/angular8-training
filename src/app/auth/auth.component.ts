@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
 import { NgForm } from '@angular/forms';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Role } from '../shared/models/role.model';
 import { UserInfo } from '../shared/models/user2.model';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-auth',
@@ -18,10 +19,12 @@ export class AuthComponent {
   private currentUserSubject: BehaviorSubject<UserInfo>;
   public currentUser: Observable<UserInfo>;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router,private activatedRoute: ActivatedRoute) {
     this.currentUserSubject = new BehaviorSubject<UserInfo>(JSON.parse(sessionStorage.getItem('user')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
+
+
 
   onSubmit(form: NgForm) {
     if (!form.valid) {
@@ -36,6 +39,7 @@ export class AuthComponent {
 
     authObs = this.authService.login(email, password);
 
+    
     authObs.subscribe(
       resData => {
         console.log(resData);
