@@ -54,8 +54,12 @@ export class EditUserComponent implements OnInit {
   }
 
   addUser() {
-    let id = this.userService.addUser2(this.user);
-    this.router.navigate(['users', id]);
+   this.userService.addUser2(this.user).subscribe((data) => {
+      console.log(data);
+      this.userService.getUsers().subscribe();
+      this.router.navigate(['users', data.id]);
+    });;
+    
   }
 
 }

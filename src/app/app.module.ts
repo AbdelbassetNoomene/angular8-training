@@ -14,6 +14,10 @@ import { ShortTextDirective } from './shared/directives/short-text.directive';
 import { FilterPipe } from './shared/pipes/filter.pipe';
 import { RouterModule } from '@angular/router';
 import { AppRoutes } from './app.routes';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthComponent } from './auth/auth.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TokenInterceptorService } from './shared/services/token.service';
 
 @NgModule({
   declarations: [
@@ -25,15 +29,20 @@ import { AppRoutes } from './app.routes';
     HighlightDirective,
     PropertiesHighlightDirective,
     ShortTextDirective,
-    FilterPipe
+    FilterPipe,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(AppRoutes)
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true},],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

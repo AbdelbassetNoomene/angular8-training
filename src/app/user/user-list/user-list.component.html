@@ -35,19 +35,19 @@
                 </ng-container>
             
                 <!-- actions -->
-                <ng-container matColumnDef="actions">
+                <ng-container matColumnDef="actions" >
                   <mat-header-cell *matHeaderCellDef>
-                    <button mat-icon-button color="primary" (click)="addUser()">
+                    <button mat-icon-button color="primary" (click)="addUser()" *ngIf="isAdmin()">
                       <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
                     </button>
                   </mat-header-cell>
             
-                  <mat-cell *matCellDef="let row; let i=index;">
-                    <button mat-icon-button color="accent" (click)="editUser(row.id)">
+                  <mat-cell *matCellDef="let row; let i=index;" >
+                    <button mat-icon-button color="accent" (click)="editUser(row.id)" *ngIf="isAdmin()">
                       <mat-icon aria-label="Edit">edit</mat-icon>
                     </button>
             
-                    <button mat-icon-button color="accent" (click)="deleteUser(row.id)">
+                    <button mat-icon-button color="accent" (click)="deleteUser(row.id)" *ngIf="isAdmin()">
                       <mat-icon aria-label="Delete">delete</mat-icon>
                     </button>
                   </mat-cell>

@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
 import { LoggingService } from './logging.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -14,23 +15,25 @@ export class UserService {
     new User(4, 'name 4', 'lastname 4', true)
   ];
 
-  constructor(private logging: LoggingService) { }
+  constructor(private logging: LoggingService,private http : HttpClient ) { }
 
 
-  getUsers(): User[] {
-    return this.users;
+  getUsers() {
+    return this.http.get<User[]>('https://manage-users-back.herokuapp.com/users');
+    //return this.users;
   }
 
   addUser(name: string, lastname: string) {
     this.logging.log('add new user', name);
     let user = new User(this.users.length + 1, name, lastname, false);
-    this.users.push(user);
+    return this.http.post('https://manage-users-back.herokuapp.com/users',user)
+    //this.users.push(user);
   }
 
   addUser2(user: User) {
-    user.id = this.users.length + 1;
-    this.users.push(user);
-    return user.id;
+    // user.id = this.users.length + 1;
+    // this.users.push(user);
+    return this.http.post<User>('https://manage-users-back.herokuapp.com/users',user);
   }
 
   getUser(id: number) {
