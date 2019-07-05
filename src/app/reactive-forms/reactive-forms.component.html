@@ -1,0 +1,36 @@
+<mat-card class="contact-card">
+    <mat-card-header>
+        <mat-card-title>Reactive Form</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form id="contactForm" [formGroup]="form" (ngSubmit)="submit()">
+            <mat-form-field>
+                <input matInput placeholder="firstname" formControlName="firstname" class="form-control"
+                    name="firstname">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput placeholder="lastname" formControlName="lastname" class="form-control" name="lastname">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput placeholder="email" formControlName="email" class="form-control" name="email">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <textarea rows="4" cols="50" matInput placeholder="message" formControlName="message"
+                    class="form-control" name="message"></textarea>
+            </mat-form-field>
+            <br>
+            <button id="btnSubmit" mat-raised-button type="submit" color="primary">Submit</button>
+        </form>
+        <br><br>
+        firstname : <strong>{{form.value.firstname}} </strong>
+        <br>
+        lastname : <strong>{{form.value.lastname}} </strong>
+        <br>
+        email : <strong>{{form.value.email}} </strong>
+        <br>
+        message : <strong>{{form.value.message}} </strong>
+    </mat-card-content>
+</mat-card>

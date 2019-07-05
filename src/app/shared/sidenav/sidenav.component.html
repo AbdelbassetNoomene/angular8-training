@@ -22,6 +22,12 @@
                 <span>Chat</span>
             </a>
         </mat-nav-list>
+        <mat-nav-list *ngIf="authenticated">
+                <a mat-list-item class="ml-2" routerLink="/forms" routerLinkActive="active">
+                    <mat-icon mat-list-icon>format_shapes</mat-icon>
+                    <span>Reactive Forms</span>
+                </a>
+            </mat-nav-list>
       </div>
     </mat-sidenav>
   

@@ -19,6 +19,7 @@ import { AuthComponent } from './auth/auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TokenInterceptorService } from './shared/services/token.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     PropertiesHighlightDirective,
     ShortTextDirective,
     FilterPipe,
-    AuthComponent
+    AuthComponent,
+    ReactiveFormsComponent
   ],
   imports: [
     BrowserModule,
