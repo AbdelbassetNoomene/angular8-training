@@ -4,6 +4,7 @@ import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 
 @Component({
   selector: 'app-edit-user',
@@ -14,7 +15,10 @@ export class EditUserComponent implements OnInit {
 
   //userForm: FormGroup;
   @ViewChild('f', { static: true }) userForm: NgForm;
-  user: User;
+
+  @ViewChild('confirmAddUser',{static : true}) private confirmAddUser: SwalComponent;
+  @ViewChild('userAdded',{static : true}) private userAdded: SwalComponent;
+  user;
   paramsSubscription: Subscription;
 
   constructor(private userService: UserService, private router: Router, private activeRoute: ActivatedRoute) {
@@ -54,12 +58,16 @@ export class EditUserComponent implements OnInit {
   }
 
   addUser() {
+    console.log(this.user);
    this.userService.addUser2(this.user).subscribe((data) => {
       console.log(data);
-      this.userService.getUsers().subscribe();
-      this.router.navigate(['users', data.id]);
-    });;
+      this.userAdded.show();
+    });
     
+  }
+
+  redirect(){
+    this.router.navigate(['users']);
   }
 
 }

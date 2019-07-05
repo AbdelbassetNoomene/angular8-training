@@ -60,6 +60,10 @@ export class UserListComponent implements OnInit {
   confirmDeleteUser(){
     this.userService.deleteUser(this.selectedId).subscribe((data) => {
       this.userDeleted.show();
+      this.userService.getUsers().subscribe((data) => {
+        console.log(data);
+        this.listUsers= data;
+      });
     });
   }
   isAdmin() {
