@@ -25,12 +25,12 @@ export class AuthService {
     const code = btoa(email + ':' + password);
     const headers = new HttpHeaders().set('Authorization', 'Basic ' + code);
     //return this.http.post<any>(API_URLS.AUTH_URL, null,{headers});
-    return this.http.post<any>("https://manage-users-back.herokuapp.com/auth", null,{headers})
+    return this.http.post<any>("http://localhost:8080/auth", null,{headers})
     .pipe(map(res => {
       if (res && res.token) {
           sessionStorage.setItem('token', res.token);
         const helper = new JwtHelperService();
-        this.user =helper.decodeToken(res.token).sub;
+        this.user =JSON.parse(helper.decodeToken(res.token).sub);
 
         sessionStorage.setItem('user', JSON.stringify(this.user));
         this.currentUserSubject.next(this.user);
@@ -54,7 +54,7 @@ getToken() {
 decodeToken(): User {
   let token = sessionStorage.getItem('token');
   let helper = new JwtHelperService();
-  let user = helper.decodeToken(token).sub;
+  let user = JSON.parse(helper.decodeToken(token).sub);
   return user;
 }
 

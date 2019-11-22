@@ -19,21 +19,21 @@ export class UserService {
 
 
   getUsers() {
-    return this.http.get<User[]>('https://manage-users-back.herokuapp.com/users');
+    return this.http.get<User[]>('http://localhost:8080/users');
     //return this.users;
   }
 
   addUser(name: string, lastname: string) {
     this.logging.log('add new user', name);
     let user = new User(this.users.length + 1, name, lastname, false);
-    return this.http.post('https://manage-users-back.herokuapp.com/users',user)
+    return this.http.post('http://localhost:8080/users',user)
     //this.users.push(user);
   }
 
   addUser2(user: User) {
     // user.id = this.users.length + 1;
     // this.users.push(user);
-    return this.http.post<User>('https://manage-users-back.herokuapp.com/users',user);
+    return this.http.post<User>('http://localhost:8080/users',user);
   }
 
   getUser(id: number) {
@@ -48,7 +48,7 @@ export class UserService {
   deleteUser(id) {
     // user.id = this.users.length + 1;
     // this.users.push(user);
-    return this.http.delete('https://manage-users-back.herokuapp.com/users/'+id);
+    return this.http.delete('http://localhost:8080/users/'+id);
   }
   
 }

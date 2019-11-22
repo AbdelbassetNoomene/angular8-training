@@ -1,6 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
-import { HttpInterceptor } from '@angular/common/http';
+import { HttpInterceptor, HttpResponse } from '@angular/common/http';
 import { AuthService } from './auth.service';
+import { tap, catchError } from "rxjs/operators";
 @Injectable()
 export class TokenInterceptorService implements HttpInterceptor {
 
@@ -13,17 +14,27 @@ export class TokenInterceptorService implements HttpInterceptor {
         console.log(token);
         let tokenizedReq = req.clone(
             {
-              headers: req.headers.set('Authorization', token)
+              headers: req.headers.set('Authorization', "Bearer " + token)
             }
           )
-          return next.handle(tokenizedReq);
+          return next.handle(tokenizedReq).pipe(
+            tap(evt => {
+                if (evt instanceof HttpResponse) {
+                  console.log(evt.headers.get('Authorization'));
+                }
+                }));
     }else{
         let header = req.clone(
             {
               headers: req.headers.set('Accept', 'application/json')
             }
           )
-          return next.handle(header);
+          return next.handle(header).pipe(
+            tap(evt => {
+                if (evt instanceof HttpResponse) {
+                  console.log(evt.headers.get('Authorization'));
+                }
+                }));
     }
   }
 

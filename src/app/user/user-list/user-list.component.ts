@@ -63,7 +63,6 @@ export class UserListComponent implements OnInit {
     });
   }
   isAdmin() {
-    console.log(this.currentUser.roles.includes(Role.ADMIN));
     return this.currentUser && this.currentUser.roles.includes(Role.ADMIN);
 }
 
