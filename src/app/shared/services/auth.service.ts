@@ -7,6 +7,7 @@ import { User } from '../models/user.model';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserInfo } from '../models/user2.model';
+import {NotificationsService} from './notifications.service';
 
 
 @Injectable({ providedIn: 'root' })
@@ -15,7 +16,7 @@ export class AuthService {
   public currentUser: Observable<UserInfo>;
   public user : UserInfo;
 
-  constructor(private http: HttpClient,
+  constructor(private http: HttpClient, private notificationsService: NotificationsService,
     private router: Router) {
       this.currentUserSubject = new BehaviorSubject<UserInfo>(JSON.parse(sessionStorage.getItem('user')));
         this.currentUser = this.currentUserSubject.asObservable();
@@ -24,7 +25,6 @@ export class AuthService {
   login(email: string, password: string) {
     const code = btoa(email + ':' + password);
     const headers = new HttpHeaders().set('Authorization', 'Basic ' + code);
-    //return this.http.post<any>(API_URLS.AUTH_URL, null,{headers});
     return this.http.post<any>("http://localhost:8080/auth", null,{headers})
     .pipe(map(res => {
       if (res && res.token) {
@@ -34,6 +34,7 @@ export class AuthService {
 
         sessionStorage.setItem('user', JSON.stringify(this.user));
         this.currentUserSubject.next(this.user);
+        this.notificationsService.redirect(this.user);
       }
       // console.log(res);
       return res;
