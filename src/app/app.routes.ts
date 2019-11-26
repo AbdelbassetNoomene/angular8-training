@@ -9,6 +9,6 @@ export const AppRoutes: Routes = [
     { path: 'auth', component: AuthComponent, pathMatch: 'full'},
     { path: 'users',canActivate: [AuthGuard], loadChildren: () => import('./user/user.module').then(m => m.UserModule)},
     { path: 'dashboard', component: DashboardComponent },
-  { path: 'chat', component: ChatComponent },
+  { path: 'chat',canActivate: [AuthGuard], component: ChatComponent },
     { path: '**', redirectTo: '' },
   ];

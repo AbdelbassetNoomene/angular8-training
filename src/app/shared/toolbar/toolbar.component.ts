@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import {NotificationsService} from '../services/notifications.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -16,7 +17,7 @@ export class ToolbarComponent implements OnInit {
   currentUserSubscription : Subscription;
   authenticated : boolean;
 
-  constructor(private authenticationService: AuthService) {
+  constructor(private authenticationService: AuthService, private notifService: NotificationsService) {
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       if(user){
         this.authenticated = true;
@@ -24,6 +25,9 @@ export class ToolbarComponent implements OnInit {
         this.authenticated = false;
       } 
     });
+    if (this.notifService.getWSState() == null || this.notifService.getWSState() == undefined) {
+      this.notifService.initWebsocket(localStorage.getItem('websocketId'));
+    }
   }
 
   ngOnInit() {

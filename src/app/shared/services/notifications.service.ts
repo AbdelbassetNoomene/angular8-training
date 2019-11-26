@@ -10,6 +10,7 @@ import swal from 'sweetalert2';
 import { User } from '../models/user.model';
 import { Router } from '@angular/router';
 import {NotifierService} from 'angular-notifier';
+import {UserInfo} from '../models/user2.model';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
@@ -26,6 +27,7 @@ export class NotificationsService {
   private statesubscription: Subscription;
   public uiData: any;
   private notifNumber = new BehaviorSubject(0);
+  public chatMsg: BehaviorSubject<any>;
   currentNumber = this.notifNumber.asObservable();
 
   constructor(
@@ -48,7 +50,7 @@ export class NotificationsService {
       .subscribe(msg => {
         this.onStateChange(msg);
       });
-
+    this.chatMsg = new BehaviorSubject<any>(null);
   }
 
   redirect(user) {
@@ -64,8 +66,14 @@ export class NotificationsService {
   private onData = message => {
     console.log(this.wsstate);
     console.log(message.body);
-    this.showNotification(JSON.parse(message.body));
-    this.updateNotif();
+    const notif = JSON.parse(message.body);
+    if(notif.type === 'chat'){
+      this.chatMsg.next(notif);
+    }else{
+      this.showNotification(JSON.parse(message.body));
+      this.updateNotif();
+    }
+
 
 
   };
