@@ -1,0 +1,146 @@
+mat-card{
+
+}
+
+mat-card-content.chat-content{
+  display: flex;
+  min-height: calc(100vh - 137px);
+  max-height: calc(100vh - 137px);
+}
+
+mat-card-content .team{
+  min-width: 250px;
+  border-right: 1px solid #c1c1c1;
+  padding-right: 0x;
+  padding-left: 0px;
+  /*height: 100%;*/
+  overflow-y: scroll;
+  max-height: calc(100% - 155px);
+  height: calc(100% - 155px);
+}
+mat-card-content .team .unread-count {
+  background-color: #e5031a;
+  color: #fff;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 10px;
+  height: 18px;
+  top: 2px;
+  left: 12px;
+  border-radius: 9px;
+  padding: 0 5px;
+  font-size: 11px;
+  text-align: center;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.35);
+}
+
+mat-card-content .status-icon.online {
+  background-color: #4caf50;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  bottom: 10px;
+  left: 44px;
+  border-radius: 50%;
+}
+mat-card-content .content{
+  width: 75px;
+  padding: 16px 0;
+
+}
+mat-card-content .input-text{
+  margin-left: 5px;
+  margin-right: 5px;
+  width : auto;
+  display: block;
+}
+.bubble{
+  display: block;
+  clear: both;
+  padding: 5px;
+}
+.chat-item{
+  max-height: calc(100% - 64px);
+  overflow-y: scroll;
+}
+
+.chat-item {
+  background-image: url('src/assets/images/bg-chat.png');
+  height: -webkit-fill-available;
+  width: 100%;
+}
+.chat-item .bubble .message{
+  color: rgba(0,0,0,.87);
+  background-color: #a5d4de;
+  margin-left: auto;
+  border-radius: 8px 25px 3px 25px;
+  padding: 16px;
+  margin: 10px;
+  /*margin-left: 65px;*/
+  margin-top: 0px;
+  clear: both;
+  word-break: break-word;
+}
+.chat-item .left .message{
+  background-color: #3c4252;
+  color: #fff;
+}
+.chat-item .text.left{
+  float: left;
+}
+.chat-item .text.right{
+  float: right;
+  margin-left: 89px;
+}
+
+.chat-item .bubble .circle{
+  position: relative;
+  margin: 6px;
+  float: left;
+}
+.chat-item .bubble .time{
+  color: rgb(109, 108, 107);
+  display: flex;
+  position: relative;
+  right: 5px;
+  text-align: right;
+  margin-left: 42px;
+  top: -11px;
+  font-size: 10px;
+}
+.mat-list-item{
+  display: block;
+  height: 59px;
+}
+
+mat-card-content .circle{
+  border-radius: 50%;
+  height: 40px;
+  background-color: white;
+}
+
+.tp-header-image mat-icon.chat {
+  float: left;
+}
+.tp-header-image mat-icon.chat {
+  float: right;
+}
+
+.closed-Chat{
+  width: 55px;
+}
+
+.nav-scroll{
+  max-height: 100%;
+}
+
+.selectedItem {
+  background-color: #673ab7ba!important;
+}
+
+
+.send{
+  cursor: pointer;
+}

@@ -1,0 +1,41 @@
+<mat-card class="tp-card shadow_left" [ngClass]="(isOpen != true) ? 'closed-Chat' : ''">
+  <mat-card-header flex>
+    <div mat-card-avatar class="tp-header-image" (click)="resizeChat()">
+      <mat-icon class="ml-3 chat" title="Chat" style="width: 18px; cursor: pointer;">chat</mat-icon>
+      <!-- <mat-icon class="ml-3 clear">clear</mat-icon> -->
+    </div>
+    <mat-card-title *ngIf="isOpen">
+      <span>Team Chat</span>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content class="chat-content ">
+    <div class="team" *ngIf="lstUsers">
+      <mat-nav-list class="nav-scroll" >
+        <mat-list-item *ngFor="let member of lstUsers; let i = index" (click)="selectMember(i)" [ngClass]="(selectedIndex == i) ? 'selectedItem' : ''">
+          <img class="circle" src="./assets/images/avatar.png">
+          <div class="unread-count ng-star-inserted">2</div>
+          <div class="status-icon online"></div>
+          <div>
+            {{member}}
+          </div>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+    <div style="display: block;width: 100%;">
+      <div class="chat-item" >
+        <div class="bubble" *ngFor="let chat of chatMember.chats; let i = index">
+          <img class="circle" src="./assets/images/avatar.jpg" *ngIf="chat.senderId != userId">
+          <div class="text" [ngClass]="(chat.senderId != userId) ? 'left' : 'right'">
+            <div class="message" alt="chat.date | date : 'dd/mm/yyyy hh:MM'">{{chat.text}}</div>
+            <span class="time secondary-text">{{chat.date | date : 'dd/mm/yyyy hh:MM'}}</span>
+          </div>
+        </div>
+      </div>
+        <mat-form-field appearance="outline" class="input-text" *ngIf="isOpen">
+          <input matInput placeholder="Type your message" [(ngModel)]="message" name="message" (keyup.enter)="sendMessage()">
+          <mat-icon matSuffix (click)="sendMessage()" class="send">send</mat-icon>
+        </mat-form-field>
+    </div>
+  </mat-card-content>
+</mat-card>
