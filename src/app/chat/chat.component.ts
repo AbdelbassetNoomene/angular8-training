@@ -1,13 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-
-import * as Stomp from 'stompjs';
-import * as SockJS from 'sockjs-client';
-import { ToastrService } from 'ngx-toastr';
-import {API} from '../config/api-url';
-import {Message} from '../shared/models/message.model';
 import {WebsocketService} from '../shared/services/websocket.service';
-import {NotifierService} from 'angular-notifier';
 import {ChatService} from '../shared/services/chat.service';
 import {Subscription} from 'rxjs';
 import {NotificationsService} from '../shared/services/notifications.service';

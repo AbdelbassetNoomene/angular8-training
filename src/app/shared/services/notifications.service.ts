@@ -3,7 +3,6 @@ import { Message } from '@stomp/stompjs';
 import { WebsocketService } from './websocket.service';
 import { Subscription, Observable } from 'rxjs';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
-import * as jQuery from 'jquery';
 
 import { BehaviorSubject } from 'rxjs';
 import swal from 'sweetalert2';
