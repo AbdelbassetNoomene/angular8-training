@@ -12,7 +12,6 @@ import {stompConfig, WebSocketConfig} from '../../config/websocket.config';
 })
 export class WebsocketService {
 
-  url: string = API.url + 'api/socket';
   public message: Observable<Message>;
   public wsstate: Observable<string>;
 

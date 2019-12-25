@@ -9,6 +9,6 @@ export class ChatService {
   constructor(private http: HttpClient) { }
 
   getChatUsers() {
-    return this.http.get<string[]>('http://localhost:8080/api/users');
+    return this.http.get<string[]>('http://localhost:9090/api/users');
   }
 }

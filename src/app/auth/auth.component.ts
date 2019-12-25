@@ -38,7 +38,7 @@ export class AuthComponent {
 
     authObs = this.authService.login(email, password);
 
-    
+
     authObs.subscribe(
       resData => {
         console.log(resData);
@@ -51,6 +51,10 @@ export class AuthComponent {
     );
 
     form.reset();
+  }
+
+  loginCas(){
+    window.location.href = 'http://auth.example.com:8080/cas/login?service=http://localhost:4200/users';
   }
 
 }

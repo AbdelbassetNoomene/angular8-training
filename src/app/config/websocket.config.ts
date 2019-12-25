@@ -1,7 +1,7 @@
 import { StompConfig, StompService } from '@stomp/ng2-stompjs';
 
 export class WebSocketConfig {
-  public static uri = 'ws://localhost:8080/notifications';
+  public static uri = 'ws://localhost:9090/notifications';
   public static topic = '/user/queue/reply';
 }
 export const stompConfig: StompConfig = {

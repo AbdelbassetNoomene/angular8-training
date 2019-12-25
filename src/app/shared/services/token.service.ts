@@ -21,6 +21,7 @@ export class TokenInterceptorService implements HttpInterceptor {
             tap(evt => {
                 if (evt instanceof HttpResponse) {
                   console.log(evt.headers.get('Authorization'));
+                  sessionStorage.setItem('token', evt.headers.get('Authorization'));
                 }
                 }));
     }else{
@@ -33,6 +34,7 @@ export class TokenInterceptorService implements HttpInterceptor {
             tap(evt => {
                 if (evt instanceof HttpResponse) {
                   console.log(evt.headers.get('Authorization'));
+
                 }
                 }));
     }

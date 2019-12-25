@@ -25,7 +25,7 @@ export class AuthService {
   login(email: string, password: string) {
     const code = btoa(email + ':' + password);
     const headers = new HttpHeaders().set('Authorization', 'Basic ' + code);
-    return this.http.post<any>("http://localhost:8080/auth", null,{headers})
+    return this.http.post<any>("http://localhost:9090/auth", null,{headers})
     .pipe(map(res => {
       if (res && res.token) {
           sessionStorage.setItem('token', res.token);

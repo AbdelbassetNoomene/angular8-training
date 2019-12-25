@@ -19,7 +19,7 @@ export class UserService {
 
 
   getUsers() {
-    return this.http.get<User[]>('http://localhost:8080/users');
+    return this.http.get<User[]>('http://localhost:9090/users');
     //return this.users;
   }
 
@@ -50,5 +50,5 @@ export class UserService {
     // this.users.push(user);
     return this.http.delete('http://localhost:8080/users/'+id);
   }
-  
+
 }
